@@ -136,3 +136,22 @@ body{
 /* Utility: show whole portrait images without cropping */
 .figure.contain{ aspect-ratio: auto; background:#0f1320; }
 .figure.contain img{ width:100%; height:auto; object-fit:contain; display:block; }
+
+/* Disco Stage */
+.stage{
+  position:relative; height:360px; margin:12px 0 6px; overflow:hidden;
+  background: radial-gradient(600px 240px at 50% 0%, rgba(123,149,255,.12), transparent 70%),
+              linear-gradient(180deg, #0b0e12, #0e1117);
+  border:1px solid rgba(255,255,255,.08); border-radius:var(--radius);
+}
+.stage canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+.stage .dj{
+  position:absolute; left:50%; bottom:8px; transform:translateX(-50%);
+  width:180px; color:#ffffff; opacity:.9; fill:currentColor;
+  animation:dj-bob 2.1s ease-in-out infinite;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,.5));
+}
+@keyframes dj-bob{
+  0%,100%{ transform: translateX(-50%) translateY(0); }
+  50%{ transform: translateX(-50%) translateY(-8px); }
+}
