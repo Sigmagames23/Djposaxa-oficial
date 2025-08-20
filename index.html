@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="keywords" content="DJ Posaxa, djposaxa, DJ, DJ Granollers, DJ Barcelona, DJ BCN, DJ Catalunya, DJ Catalonia, DJ Cataluña, DJ per festes, DJ para fiestas, DJ esdeveniments, DJ eventos, DJ boda, DJ bodas, DJ aniversaris, DJ cumpleaños, DJ festa major, discomòbil, discomovil, música, música urbana, reggaeton, dembow, techno, mashups, remixes, música catalana, animació, animacion, sonorització, sonido, contratación DJ, contratar DJ, DJ joven, DJ 2025, DJ Posaxa Instagram, DJ Posaxa TikTok" />
-  <meta name="description" content="DJ Posaxa — DJ per festes i esdeveniments a Granollers i Barcelona. Música urbana, reggaeton, dembow, techno, mashups i animació professional per a la teva festa. Contacta per portar el teu esdeveniment al següent nivell." />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="DJ Posaxa - Música per a festes i esdeveniments a Granollers i BCN. Especialista en mashups, reggaeton, dembow i música catalana." />
+  <meta name="keywords" content="DJ, música, festa, esdeveniments, Granollers, BCN, mashup, reggaeton, dembow" />
   <meta property="og:title" content="DJ Posaxa — DJ per festes i esdeveniments" />
-  <meta property="og:description" content="Música per a festes i esdeveniments a Granollers i BCN: reggaeton, dembow, techno, mashups i animació professional." />
+  <meta property="og:description" content="Música per a festes i esdeveniments a Granollers i BCN." />
   <meta property="og:image" content="Fotos/inici 1.jpg" />
   <meta property="og:locale" content="ca_ES" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -17,11 +18,562 @@
   <meta name="twitter:image" content="Fotos/inici 1.jpg" />
   <title>DJ Posaxa — Inici</title>
   <link rel="stylesheet" href="assets/css/style.css" />
-  <!-- Puter SDK en <head> para Sigma AI -->
-  <script src="https://js.puter.com/v2/puter.js" defer></script>
+  <!-- Librerías para Sigma AI -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Emojis JoyPixels -->
+  <script src="https://cdn.jsdelivr.net/npm/emoji-toolkit@11.5.0/lib/js/joypixels.min.js"></script>
+  <!-- Puter AI -->
+  <script src="https://js.puter.com/v2/"></script>
+  
+  <style>
+    /* Reset y optimización móvil */
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    
+    /* Animaciones senior avanzadas */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.3)); }
+      50% { filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8)); }
+    }
+    
+    @keyframes slideInUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes slideInLeft {
+      from { transform: translateX(-50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideInRight {
+      from { transform: translateX(50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes bounceIn {
+      0% { transform: scale(0.3) translateY(50px); opacity: 0; }
+      50% { transform: scale(1.05) translateY(-10px); opacity: 0.8; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    
+    @keyframes rotateInLeft {
+      from { transform: rotate(-10deg) translateX(-50px) scale(0.8); opacity: 0; }
+      to { transform: rotate(0deg) translateX(0) scale(1); opacity: 1; }
+    }
+    
+    @keyframes rotateInRight {
+      from { transform: rotate(10deg) translateX(50px) scale(0.8); opacity: 0; }
+      to { transform: rotate(0deg) translateX(0) scale(1); opacity: 1; }
+    }
+    
+    @keyframes gradientWave {
+      0%, 100% { background-position: 0% 50%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 50% 100%; }
+      75% { background-position: 0% 50%; }
+    }
+    
+    @keyframes fadeInScale {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    /* Mejoras en cards con efectos premium */
+    .card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease-out;
+      animation-delay: calc(var(--delay, 0) * 0.15s);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Efectos diferentes según posición */
+    .grid > .card:nth-child(odd) {
+      animation-name: slideInLeft;
+    }
+    
+    .grid > .card:nth-child(even) {
+      animation-name: slideInRight;
+    }
+    
+    .grid > .card:nth-child(3n) {
+      animation-name: bounceIn;
+    }
+    
+    .grid > .card:first-child {
+      animation-name: rotateInLeft;
+    }
+    
+    .grid > .card:last-child {
+      animation-name: rotateInRight;
+    }
+    
+    /* Efecto shimmer en hover */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.6s;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .card:hover::before {
+      left: 100%;
+    }
+    
+    .card:hover {
+      transform: translateY(-12px) scale(1.03) rotate(1deg);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25), 0 0 20px rgba(102, 126, 234, 0.2);
+    }
+    
+    .card img {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card:hover img {
+      transform: scale(1.15) rotate(-1deg);
+      filter: brightness(1.1) saturate(1.2);
+    }
+    
+    /* Hero rediseñado y optimizado para móvil */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      background-size: 300% 300%;
+      animation: gradientWave 8s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    
+    .hero > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      padding: 8px 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: white;
+      margin-bottom: 20px;
+      animation: fadeInScale 1s ease-out 0.2s both;
+    }
+    
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      color: white;
+      margin: 0 0 20px 0;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      animation: scaleIn 1.2s ease-out 0.4s both;
+      line-height: 1.1;
+    }
+    
+    .event-details {
+      margin: 30px 0;
+      animation: slideInUp 1s ease-out 0.6s both;
+    }
+    
+    .event-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .event-info span {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 12px 18px;
+      color: white;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .event-info span:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero p {
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+      line-height: 1.6;
+      animation: slideInUp 1s ease-out 0.8s both;
+    }
+    
+    .hero-cta {
+      animation: bounceIn 1.2s ease-out 1s both;
+    }
+    
+    .cta-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ffd700, #ffa500);
+      color: #333;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 16px;
+      text-shadow: none;
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .cta-badge:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+    }
+    
+    /* Efectos de texto mejorados */
+    .text {
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease-out;
+      animation-delay: calc(var(--text-delay, 0) * 0.2s);
+    }
+    
+    .text:nth-of-type(odd) {
+      animation-name: slideInLeft;
+    }
+    
+    .text:nth-of-type(even) {
+      animation-name: slideInRight;
+    }
+    
+    /* Mejoras para el header */
+    .header {
+      animation: slideInUp 1s ease-out;
+      backdrop-filter: blur(10px);
+    }
+    
+    .brand {
+      animation: rotateInLeft 1s ease-out 0.2s both;
+    }
+    
+    .nav a {
+      animation: slideInUp 1s ease-out forwards;
+      animation-delay: calc(var(--nav-delay, 0) * 0.1s + 0.3s);
+      transition: all 0.3s ease;
+    }
+    
+    .nav a:hover {
+      transform: translateY(-2px);
+      text-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+    }
+    
+    .social a {
+      animation: bounceIn 1s ease-out forwards;
+      animation-delay: calc(var(--social-delay, 0) * 0.1s + 0.5s);
+    }
+    
+    /* Footer mejorado */
+    .footer {
+      animation: slideInUp 1s ease-out;
+    }
+    
+    /* Estilos para Sigma AI - Diseño Senior */
+    #sigma-logo {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: 3px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3), 0 4px 15px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    #sigma-logo:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4), 0 8px 25px rgba(0,0,0,0.3);
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    #sigma-logo:active {
+      transform: scale(0.95);
+    }
+    
+    /* Pulso animado cuando hay actividad */
+    #sigma-logo.pulse {
+      animation: sigmaPulse 2s infinite;
+    }
+    
+    @keyframes sigmaPulse {
+      0% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3), 0 4px 15px rgba(0,0,0,0.2), 0 0 0 0 rgba(102, 126, 234, 0.4); }
+      50% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3), 0 4px 15px rgba(0,0,0,0.2), 0 0 0 20px rgba(102, 126, 234, 0); }
+      100% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3), 0 4px 15px rgba(0,0,0,0.2), 0 0 0 0 rgba(102, 126, 234, 0); }
+    }
+    
+    /* Chatbox con diseño premium */
+    #sigma-chatbox {
+      position: fixed;
+      bottom: 110px;
+      right: 30px;
+      width: 380px;
+      height: 0;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    #sigma-chatbox.open {
+      display: flex;
+      height: 500px;
+      animation: scaleIn 0.4s ease-out;
+    }
+    
+    #sigma-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 16px;
+      text-align: center;
+      font-weight: 600;
+      color: white;
+      font-size: 16px;
+      border-radius: 20px 20px 0 0;
+      position: relative;
+    }
+    
+    #sigma-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    }
+    
+    #sigma-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      font-size: 14px;
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+    
+    #sigma-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    #sigma-messages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    #sigma-messages::-webkit-scrollbar-thumb {
+      background: rgba(102, 126, 234, 0.3);
+      border-radius: 3px;
+    }
+    
+    #sigma-input-box {
+      display: flex;
+      padding: 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 0 0 20px 20px;
+    }
+    
+    #sigma-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid rgba(102, 126, 234, 0.2);
+      border-radius: 25px;
+      outline: none;
+      background: white;
+      color: #2c3e50;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      margin-right: 8px;
+    }
+    
+    #sigma-input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    #sigma-send {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+    
+    #sigma-send:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    #sigma-send:active {
+      transform: translateY(0);
+    }
+    
+    /* Mensajes con estilo moderno */
+    .sigma-message {
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      max-width: 85%;
+      animation: slideInUp 0.3s ease-out;
+    }
+    
+    .sigma-user-message {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      margin-left: auto;
+      text-align: right;
+    }
+    
+    .sigma-ai-message {
+      background: rgba(102, 126, 234, 0.1);
+      color: #2c3e50;
+      border-left: 3px solid #667eea;
+    }
+    
+    /* Emojis más pequeños y bonitos - JoyPixels */
+    .joypixels, .emoji {
+      height: 18px !important;
+      width: 18px !important;
+      margin: 0 2px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+    
+    /* Optimización móvil específica */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 40px 15px;
+      }
+      
+      .hero-badge {
+        font-size: 11px;
+        padding: 6px 16px;
+      }
+      
+      .event-info {
+        gap: 15px;
+      }
+      
+      .event-info span {
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+      
+      .cta-badge {
+        padding: 12px 25px;
+        font-size: 14px;
+      }
+      
+      #sigma-chatbox {
+        width: calc(100vw - 20px);
+        right: 10px;
+        bottom: 90px;
+      }
+      
+      #sigma-logo {
+        right: 15px;
+        bottom: 15px;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+      
+      .grid {
+        gap: 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .event-info {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .event-info span {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header / Navigation -->
   <header class="header">
     <div class="header__inner">
       <div class="brand">DJ Posaxa</div>
@@ -46,8 +598,19 @@
 
   <!-- Hero / Anunci esdeveniment -->
   <section class="hero">
-    <h1>🔥 DJ Posaxa a Can Trullàs (Granollers) 📅 Dimecres 17 · 🕘 22:00h</h1>
-    <p>Nit de festa, llums i bona música! DJ Posaxa et farà ballar amb els millors ritmes electrònics. 👉 Entrada lliure, no t’ho perdis!</p>
+    <div class="hero-badge">🎵 PRÒXIM ESDEVENIMENT</div>
+    <h1>DJ Posaxa a Can Trullàs</h1>
+    <div class="event-details">
+      <div class="event-info">
+        <span class="location">📍 Granollers</span>
+        <span class="date">📅 Dimecres 17</span>
+        <span class="time">🕘 21:00h</span>
+      </div>
+    </div>
+    <p>Nit de festa, llums i bona música! DJ Posaxa et farà ballar amb els millors ritmes electrònics.</p>
+    <div class="hero-cta">
+      <a href="esdeveniments.html" class="cta-badge">✨ ENTRADA LLIURE ✨</a>
+    </div>
   </section>
 
   <main class="container">
@@ -55,7 +618,6 @@
     <div class="grid">
       <article class="card reveal">
         <a class="figure" aria-label="Imatge presentació">
-          <!-- Deixa el src buit per posar la imatge més tard -->
           <img src="Fotos/inici 1.jpg" alt="Imatge presentació" loading="lazy" />
         </a>
       </article>
@@ -83,38 +645,27 @@
       </article>
 
       <article class="card reveal">
-        <a class="figure contain" aria-label="Imatge esdeveniments">
-          <img src="Fotos/inici 2.jpg" alt="Imatge esdeveniments" loading="lazy" />
+        <a class="figure" aria-label="DJ actuant">
+          <img src="Fotos/inici 2.jpg" alt="DJ actuant" loading="lazy" />
         </a>
       </article>
     </div>
 
-    <!-- Sección 3: Mensaje centrado -->
-    <div class="grid" style="margin-top:18px">
-      <article class="card reveal" style="grid-column: 1 / -1;">
-        <div class="content">
-          <h2>Música per a tothom.</h2>
-          <p class="text">Sóc DJ Posaxa i la meva especialitat és la música. Amb la meva passió per la música i la meva experiència al món de l'entreteniment, ofereixo un servei professional i personalitzat per crear l'ambient perfecte en qualsevol esdeveniment. Des de festes privades fins a grans esdeveniments, faig que la música sigui la protagonista!</p>
-        </div>
-      </article>
-    </div>
-
-    <!-- Sección 4: Dos fotos en fila -->
-    <div class="grid" style="margin-top:18px">
+    <!-- Sección 3: 4 imágenes en fila -->
+    <div class="grid" style="margin-top:18px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
       <article class="card reveal">
-        <a class="figure" aria-label="Foto 1">
-          <img src="Fotos/inici 3.jpg" alt="Foto 1" loading="lazy" />
+        <a class="figure" aria-label="Imatge 3">
+          <img src="Fotos/inici 3.jpg" alt="Imatge 3" loading="lazy" />
         </a>
       </article>
       <article class="card reveal">
-        <a class="figure" aria-label="Foto 2">
-          <img src="Fotos/inici 4.jpg" alt="Foto 2" loading="lazy" />
+        <a class="figure" aria-label="Imatge 4">
+          <img src="Fotos/inici 4.jpg" alt="Imatge 4" loading="lazy" />
         </a>
       </article>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
       <span>© <span id="year"></span> DJ Posaxa</span>
@@ -123,22 +674,144 @@
     </div>
   </footer>
 
+  <!-- Sigma AI Chatbot -->
+  <div id="sigma-logo">Σ</div>
+  <div id="sigma-chatbox">
+    <div id="sigma-header">Σ Sigma AI Beta</div>
+    <div id="sigma-messages"></div>
+    <div id="sigma-input-box">
+      <input type="text" id="sigma-input" placeholder="Escribe un mensaje...">
+      <button id="sigma-send">Enviar</button>
+    </div>
+  </div>
+
   <!-- Helpers UX -->
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
-      const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('is-visible'); }); }, {threshold:.12});
+      const obs = new IntersectionObserver((entries)=>{ 
+        entries.forEach((e, index)=>{ 
+          if(e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            e.target.style.setProperty('--delay', index);
+          }
+        }); 
+      }, {threshold:.12});
       document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
       document.querySelectorAll('img[src^="http"]').forEach(img=>{ img.referrerPolicy='no-referrer'; });
-      document.addEventListener('mousemove', (ev)=>{
-        document.querySelectorAll('.card').forEach(card=>{
-          const r = card.getBoundingClientRect();
-          card.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
-        });
+      
+      // Animaciones secuenciales para elementos de texto
+      document.querySelectorAll('.text').forEach((el, index) => {
+        el.style.setProperty('--text-delay', index);
+      });
+      
+      // Animaciones para navegación
+      document.querySelectorAll('.nav a').forEach((el, index) => {
+        el.style.setProperty('--nav-delay', index);
+      });
+      
+      // Animaciones para redes sociales
+      document.querySelectorAll('.social a').forEach((el, index) => {
+        el.style.setProperty('--social-delay', index);
       });
     });
   </script>
 
+  <!-- Sigma AI JavaScript -->
+  <script>
+    // Elementos del DOM
+    const sigmaLogo = document.getElementById("sigma-logo");
+    const sigmaChatbox = document.getElementById("sigma-chatbox");
+    const sigmaMessages = document.getElementById("sigma-messages");
+    const sigmaInput = document.getElementById("sigma-input");
+    const sigmaSend = document.getElementById("sigma-send");
+    
+    // Toggle abrir/cerrar chat con animación mejorada
+    sigmaLogo.addEventListener("click", () => {
+      sigmaChatbox.classList.toggle("open");
+      sigmaLogo.classList.add("pulse");
+      setTimeout(() => sigmaLogo.classList.remove("pulse"), 2000);
+    });
+    
+    // Función para renderizar Markdown + Emojis
+    function renderMarkdownWithEmojis(text) {
+      try {
+        let html = typeof marked !== 'undefined' ? marked.parse(text) : text;
+        if (typeof joypixels !== 'undefined') {
+          html = joypixels.toImage(html);
+        }
+        return html;
+      } catch (error) {
+        console.warn('Error renderizando markdown/emojis:', error);
+        return text;
+      }
+    }
+    
+    // Añadir mensaje al chat con mejor diseño
+    function addSigmaMessage(sender, text, isUser = false) {
+      const messageDiv = document.createElement("div");
+      messageDiv.className = `sigma-message ${isUser ? 'sigma-user-message' : 'sigma-ai-message'}`;
+      
+      const content = isUser ? text : renderMarkdownWithEmojis(text);
+      messageDiv.innerHTML = isUser ? `<strong>Tú:</strong> ${content}` : `<strong>Sigma AI:</strong> ${content}`;
+      
+      sigmaMessages.appendChild(messageDiv);
+      sigmaMessages.scrollTop = sigmaMessages.scrollHeight;
+    }
+    
+    // Enviar mensaje a Puter AI
+    async function sendSigmaMessage() {
+      const msg = sigmaInput.value.trim();
+      if (!msg) return;
+      
+      addSigmaMessage("", msg, true);
+      sigmaInput.value = "";
+      
+      const typingDiv = document.createElement("div");
+      typingDiv.className = "sigma-message sigma-ai-message";
+      typingDiv.innerHTML = "<strong>Sigma AI:</strong> <em>Escribiendo...</em> 💭";
+      sigmaMessages.appendChild(typingDiv);
+      sigmaMessages.scrollTop = sigmaMessages.scrollHeight;
+      
+      try {
+        if (typeof puter === 'undefined') {
+          throw new Error('Puter SDK no está cargado');
+        }
+        
+        const response = await puter.ai.chat(msg, { 
+          model: "gpt-4o-mini",
+          system_prompt: "Eres Sigma AI, un asistente inteligente especializado en DJ Posaxa. Esta es la página principal de inicio que presenta a DJ Posaxa como experto en música para festes i esdeveniments, especializado en creación de ambientes y remixes únicos. Ofrece mashups en vivo, sesiones de baile personalizadas y música de ambiente. Tiene un próximo evento en Can Trullàs (Granollers) el miércoles 17 a las 22:00h con entrada libre. Responde en español/catalán, usa emojis y ayuda con información general sobre sus servicios."
+        });
+        
+        sigmaMessages.removeChild(typingDiv);
+        addSigmaMessage("", response);
+        
+      } catch (error) {
+        console.error('Error en Sigma AI:', error);
+        sigmaMessages.removeChild(typingDiv);
+        addSigmaMessage("", "⚠️ Lo siento, no puedo conectarme en este momento. Intenta de nuevo más tarde. 🤖");
+      }
+      
+      sigmaLogo.classList.add("pulse");
+      setTimeout(() => sigmaLogo.classList.remove("pulse"), 1000);
+    }
+    
+    // Event listeners
+    sigmaSend.addEventListener("click", sendSigmaMessage);
+    sigmaInput.addEventListener("keypress", e => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendSigmaMessage();
+      }
+    });
+    
+    // Mensaje de bienvenida
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        addSigmaMessage("", "¡Hola! 👋 Soy Sigma AI, tu asistente para DJ Posaxa. Puedo ayudarte con información sobre sus servicios de música para fiestas y eventos, su próximo show en Can Trullàs (Granollers), o cualquier consulta que tengas. ¿En qué puedo ayudarte? 🎵✨");
+      }, 2000);
+    });
+  </script>
 
 </body>
 </html>

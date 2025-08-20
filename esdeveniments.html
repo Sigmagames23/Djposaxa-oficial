@@ -5,6 +5,309 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Esdeveniments — DJ Posaxa</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Librerías para Sigma AI -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Emojis JoyPixels -->
+  <script src="https://cdn.jsdelivr.net/npm/emoji-toolkit@11.5.0/lib/js/joypixels.min.js"></script>
+  <!-- Puter AI -->
+  <script src="https://js.puter.com/v2/"></script>
+  
+  <style>
+    /* Animaciones senior avanzadas */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.3)); }
+      50% { filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8)); }
+    }
+    
+    @keyframes slideInUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Mejoras en cards */
+    .card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: slideInUp 0.8s ease-out forwards;
+      animation-delay: calc(var(--delay, 0) * 0.1s);
+    }
+    
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    
+    /* Hero con animación */
+    .hero h1 {
+      animation: scaleIn 1s ease-out;
+      background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+      background-size: 300% 300%;
+      animation: scaleIn 1s ease-out, gradientShift 4s ease-in-out infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .hero p {
+      animation: slideInUp 1s ease-out 0.3s both;
+    }
+    
+    /* Efectos especiales para la página de eventos */
+    .esdeveniments h2 {
+      animation: pulse 2s ease-in-out infinite;
+      color: #667eea;
+    }
+    
+    .esdeveniments ul li {
+      animation: slideInUp 0.6s ease-out forwards;
+      animation-delay: calc(var(--li-delay, 0) * 0.1s);
+    }
+    
+    /* Canvas mejorado */
+    .stage {
+      position: relative;
+      height: 300px;
+      background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f0f 100%);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    #lightsCanvas {
+      width: 100%;
+      height: 100%;
+      filter: blur(0.5px);
+    }
+    
+    /* Estilos para Sigma AI - Diseño Senior */
+    #sigma-logo {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: 3px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3), 0 4px 15px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    #sigma-logo:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4), 0 8px 25px rgba(0,0,0,0.3);
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    #sigma-logo:active {
+      transform: scale(0.95);
+    }
+    
+    /* Pulso animado cuando hay actividad */
+    #sigma-logo.pulse {
+      animation: sigmaPulse 2s infinite;
+    }
+    
+    @keyframes sigmaPulse {
+      0% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3), 0 4px 15px rgba(0,0,0,0.2), 0 0 0 0 rgba(102, 126, 234, 0.4); }
+      50% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3), 0 4px 15px rgba(0,0,0,0.2), 0 0 0 20px rgba(102, 126, 234, 0); }
+      100% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3), 0 4px 15px rgba(0,0,0,0.2), 0 0 0 0 rgba(102, 126, 234, 0); }
+    }
+    
+    /* Chatbox con diseño premium */
+    #sigma-chatbox {
+      position: fixed;
+      bottom: 110px;
+      right: 30px;
+      width: 380px;
+      height: 0;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    #sigma-chatbox.open {
+      display: flex;
+      height: 500px;
+      animation: scaleIn 0.4s ease-out;
+    }
+    
+    #sigma-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 16px;
+      text-align: center;
+      font-weight: 600;
+      color: white;
+      font-size: 16px;
+      border-radius: 20px 20px 0 0;
+      position: relative;
+    }
+    
+    #sigma-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    }
+    
+    #sigma-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      font-size: 14px;
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+    
+    #sigma-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    #sigma-messages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    #sigma-messages::-webkit-scrollbar-thumb {
+      background: rgba(102, 126, 234, 0.3);
+      border-radius: 3px;
+    }
+    
+    #sigma-input-box {
+      display: flex;
+      padding: 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 0 0 20px 20px;
+    }
+    
+    #sigma-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid rgba(102, 126, 234, 0.2);
+      border-radius: 25px;
+      outline: none;
+      background: white;
+      color: #2c3e50;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      margin-right: 8px;
+    }
+    
+    #sigma-input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    #sigma-send {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+    
+    #sigma-send:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    #sigma-send:active {
+      transform: translateY(0);
+    }
+    
+    /* Mensajes con estilo moderno */
+    .sigma-message {
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      max-width: 85%;
+      animation: slideInUp 0.3s ease-out;
+    }
+    
+    .sigma-user-message {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      margin-left: auto;
+      text-align: right;
+    }
+    
+    .sigma-ai-message {
+      background: rgba(102, 126, 234, 0.1);
+      color: #2c3e50;
+      border-left: 3px solid #667eea;
+    }
+    
+    /* Emojis más pequeños y bonitos - JoyPixels */
+    .joypixels, .emoji {
+      height: 18px !important;
+      width: 18px !important;
+      margin: 0 2px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      #sigma-chatbox {
+        width: calc(100vw - 40px);
+        right: 20px;
+      }
+      
+      #sigma-logo {
+        right: 20px;
+        bottom: 20px;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -37,7 +340,7 @@
 
   <section class="hero">
     <h1>Esdeveniments</h1>
-    <p>Aquest estiu comença amb força i DJ Posaxa té preparada una temporada plena de música, energia i festa. L’objectiu és clar: encendre cada nit amb sessions plenes de ritme, bones vibracions i aquella connexió especial amb el públic que el fa únic.</p>
+    <p>Aquest estiu comença amb força i DJ Posaxa té preparada una temporada plena de música, energia i festa. L'objectiu és clar: encendre cada nit amb sessions plenes de ritme, bones vibracions i aquella connexió especial amb el públic que el fa únic.</p>
   </section>
 
   <main class="container">
@@ -47,17 +350,17 @@
           <div class="esdeveniments">
             <h2>Esdeveniments</h2>
             <p>Aquest estiu comença amb força i <strong>DJ Posaxa</strong> arriba amb una temporada plena de <strong>música, energia i festa</strong>. Cada nit està pensada per encendre el públic amb sessions carregades de ritme, bones vibracions i una connexió especial que només ell sap crear.</p>
-            <p>El tret de sortida serà a <strong>Granollers</strong>, en un lloc amb història i molt d’ambient: la <strong>Plaça de Can Trullàs</strong>. Aquesta primera nit està dissenyada especialment per als joves, amb sorpreses, moments inesperats i la promesa que serà <strong>només la primera de moltes nits espectaculars</strong>.</p>
+            <p>El tret de sortida serà a <strong>Granollers</strong>, en un lloc amb història i molt d'ambient: la <strong>Plaça de Can Trullàs</strong>. Aquesta primera nit està dissenyada especialment per als joves, amb sorpreses, moments inesperats i la promesa que serà <strong>només la primera de moltes nits espectaculars</strong>.</p>
             <ul>
               <li>🎧 <strong>Disco Inferno XS amb DJ Posaxa</strong></li>
-              <li>📅 <strong>Dimecres 17 d’agost</strong></li>
+              <li>📅 <strong>Dimecres 17 d'agost</strong></li>
               <li>🕘 21:00h</li>
               <li>📍 Plaça de Can Trullàs (Granollers)</li>
               <li>👥 Activitat per a joves de 12 a 17 anys</li>
             </ul>
-            <p>Prepara’t per a una experiència única: <strong>llums que ballen amb la música, beats que no et deixaran parar de moure els peus i un ambient carregat de bona energia</strong>. DJ Posaxa combinarà els millors temes electrònics, els hits més actuals i un toc personal que transformarà cada moment en pura festa.</p>
-            <p>A més, la nit comptarà amb <strong>espais per socialitzar, zones per descansar i una atmosfera pensada perquè cada jove se senti protagonista</strong>. Porta els teus amics i gaudeix d’una sessió que promet quedar gravada en la memòria de tothom.</p>
-            <p>Aquest és només el començament d’una sèrie de nits inoblidables amb <strong>Disco Inferno XS</strong>. No deixis passar l’oportunitat de formar part d’aquesta festa i descobrir tot el que hem preparat per a tu aquest estiu.</p>
+            <p>Prepara't per a una experiència única: <strong>llums que ballen amb la música, beats que no et deixaran parar de moure els peus i un ambient carregat de bona energia</strong>. DJ Posaxa combinarà els millors temes electrònics, els hits més actuals i un toc personal que transformarà cada moment en pura festa.</p>
+            <p>A més, la nit comptarà amb <strong>espais per socialitzar, zones per descansar i una atmosfera pensada perquè cada jove se senti protagonista</strong>. Porta els teus amics i gaudeix d'una sessió que promet quedar gravada en la memòria de tothom.</p>
+            <p>Aquest és només el començament d'una sèrie de nits inoblidables amb <strong>Disco Inferno XS</strong>. No deixis passar l'oportunitat de formar part d'aquesta festa i descobrir tot el que hem preparat per a tu aquest estiu.</p>
             <p>👉 <strong>Organitza:</strong> Blancs – Blancs to hell</p>
           </div>
         </div>
@@ -69,7 +372,6 @@
         <div class="content" style="padding:0;">
           <div class="stage" aria-label="Escenari de llums de discoteca">
             <canvas id="lightsCanvas"></canvas>
-
           </div>
         </div>
       </article>
@@ -84,54 +386,59 @@
     </div>
 
     <script>
-      // Animación simple de luces tipo cono usando canvas
+      // Animación de luces mejorada tipo cono usando canvas
       (function(){
         const canvas = document.getElementById('lightsCanvas');
         if(!canvas) return;
         const ctx = canvas.getContext('2d');
         function resize(){ canvas.width = canvas.clientWidth; canvas.height = canvas.clientHeight; }
         window.addEventListener('resize', resize); resize();
-        const beams = Array.from({length: 6}).map((_,i)=>({
-          x: (i+1)/(6+1), // distribución horizontal
-          hue: (i*60+200)%360,
+        const beams = Array.from({length: 8}).map((_,i)=>({
+          x: (i+1)/(8+1), // distribución horizontal
+          hue: (i*45+180)%360,
           phase: Math.random()*Math.PI*2,
-          speed: 0.8 + Math.random()*0.6,
+          speed: 0.6 + Math.random()*0.8,
+          intensity: 0.8 + Math.random()*0.2,
         }));
         let t=0;
         function draw(){
-          t += 0.016;
+          t += 0.02;
           ctx.clearRect(0,0,canvas.width,canvas.height);
-          // fondo suave
+          // fondo con gradiente más dramático
           const g = ctx.createLinearGradient(0,0,0,canvas.height);
-          g.addColorStop(0,'rgba(10,12,16,0)');
-          g.addColorStop(1,'rgba(10,12,16,0.5)');
+          g.addColorStop(0,'rgba(10,12,20,0.1)');
+          g.addColorStop(1,'rgba(5,6,10,0.8)');
           ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width,canvas.height);
           beams.forEach((b,idx)=>{
-            const cx = b.x*canvas.width + Math.sin(t*b.speed + b.phase)*40; // oscilación
+            const cx = b.x*canvas.width + Math.sin(t*b.speed + b.phase)*60; // oscilación mayor
             const topY = 0;
-            const baseY = canvas.height*0.86;
-            const spread = 160 + Math.cos(t*b.speed*1.2 + b.phase)*60; // apertura dinámica
+            const baseY = canvas.height*0.9;
+            const spread = 180 + Math.cos(t*b.speed*1.5 + b.phase)*80; // apertura más dinámica
+            const intensity = b.intensity * (0.7 + 0.3*Math.sin(t*b.speed*2 + b.phase));
             ctx.save();
             ctx.globalCompositeOperation = 'lighter';
             const grad = ctx.createLinearGradient(cx, topY, cx, baseY);
-            grad.addColorStop(0, `hsla(${b.hue}, 100%, 70%, 0.85)`);
-            grad.addColorStop(1, `hsla(${(b.hue+40)%360}, 100%, 50%, 0.0)`);
+            grad.addColorStop(0, `hsla(${b.hue}, 100%, 80%, ${0.9*intensity})`);
+            grad.addColorStop(0.6, `hsla(${(b.hue+30)%360}, 100%, 60%, ${0.4*intensity})`);
+            grad.addColorStop(1, `hsla(${(b.hue+60)%360}, 100%, 40%, 0.0)`);
             ctx.fillStyle = grad;
             ctx.beginPath();
-            ctx.moveTo(cx - 8, topY);
-            ctx.lineTo(cx + 8, topY);
+            ctx.moveTo(cx - 12, topY);
+            ctx.lineTo(cx + 12, topY);
             ctx.lineTo(cx + spread, baseY);
             ctx.lineTo(cx - spread, baseY);
             ctx.closePath();
             ctx.fill();
-            // halo base
-            const rGrad = ctx.createRadialGradient(cx, baseY, 0, cx, baseY, spread*0.3);
-            rGrad.addColorStop(0, `hsla(${b.hue}, 100%, 65%, 0.35)`);
-            rGrad.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = rGrad;
-            ctx.beginPath();
-            ctx.arc(cx, baseY, spread*0.3, 0, Math.PI*2);
-            ctx.fill();
+            // múltiples halos base
+            for(let r = 0; r < 3; r++) {
+              const rGrad = ctx.createRadialGradient(cx, baseY, 0, cx, baseY, spread*0.4*(1+r*0.3));
+              rGrad.addColorStop(0, `hsla(${b.hue}, 100%, 70%, ${0.3*intensity/(r+1)})`);
+              rGrad.addColorStop(1, 'rgba(0,0,0,0)');
+              ctx.fillStyle = rGrad;
+              ctx.beginPath();
+              ctx.arc(cx, baseY, spread*0.4*(1+r*0.3), 0, Math.PI*2);
+              ctx.fill();
+            }
             ctx.restore();
           });
           requestAnimationFrame(draw);
@@ -149,15 +456,133 @@
     </div>
   </footer>
 
+  <!-- Sigma AI Chatbot -->
+  <div id="sigma-logo">Σ</div>
+  <div id="sigma-chatbox">
+    <div id="sigma-header">Σ Sigma AI Beta</div>
+    <div id="sigma-messages"></div>
+    <div id="sigma-input-box">
+      <input type="text" id="sigma-input" placeholder="Escribe un mensaje...">
+      <button id="sigma-send">Enviar</button>
+    </div>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
-      const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('is-visible'); }); }, {threshold:.12});
+      const obs = new IntersectionObserver((entries)=>{ 
+        entries.forEach((e, index)=>{ 
+          if(e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            e.target.style.setProperty('--delay', index);
+          }
+        }); 
+      }, {threshold:.12});
       document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
       document.querySelectorAll('img[src^="http"]').forEach(img=>{ img.referrerPolicy='no-referrer'; });
+      
+      // Animaciones secuenciales para elementos de lista
+      document.querySelectorAll('.esdeveniments ul li').forEach((el, index) => {
+        el.style.setProperty('--li-delay', index);
+      });
     });
   </script>
 
+  <!-- Sigma AI JavaScript -->
+  <script>
+    // Elementos del DOM
+    const sigmaLogo = document.getElementById("sigma-logo");
+    const sigmaChatbox = document.getElementById("sigma-chatbox");
+    const sigmaMessages = document.getElementById("sigma-messages");
+    const sigmaInput = document.getElementById("sigma-input");
+    const sigmaSend = document.getElementById("sigma-send");
+    
+    // Toggle abrir/cerrar chat con animación mejorada
+    sigmaLogo.addEventListener("click", () => {
+      sigmaChatbox.classList.toggle("open");
+      sigmaLogo.classList.add("pulse");
+      setTimeout(() => sigmaLogo.classList.remove("pulse"), 2000);
+    });
+    
+    // Función para renderizar Markdown + Emojis
+    function renderMarkdownWithEmojis(text) {
+      try {
+        let html = typeof marked !== 'undefined' ? marked.parse(text) : text;
+        if (typeof joypixels !== 'undefined') {
+          html = joypixels.toImage(html);
+        }
+        return html;
+      } catch (error) {
+        console.warn('Error renderizando markdown/emojis:', error);
+        return text;
+      }
+    }
+    
+    // Añadir mensaje al chat con mejor diseño
+    function addSigmaMessage(sender, text, isUser = false) {
+      const messageDiv = document.createElement("div");
+      messageDiv.className = `sigma-message ${isUser ? 'sigma-user-message' : 'sigma-ai-message'}`;
+      
+      const content = isUser ? text : renderMarkdownWithEmojis(text);
+      messageDiv.innerHTML = isUser ? `<strong>Tú:</strong> ${content}` : `<strong>Sigma AI:</strong> ${content}`;
+      
+      sigmaMessages.appendChild(messageDiv);
+      sigmaMessages.scrollTop = sigmaMessages.scrollHeight;
+    }
+    
+    // Enviar mensaje a Puter AI
+    async function sendSigmaMessage() {
+      const msg = sigmaInput.value.trim();
+      if (!msg) return;
+      
+      addSigmaMessage("", msg, true);
+      sigmaInput.value = "";
+      
+      const typingDiv = document.createElement("div");
+      typingDiv.className = "sigma-message sigma-ai-message";
+      typingDiv.innerHTML = "<strong>Sigma AI:</strong> <em>Escribiendo...</em> 💭";
+      sigmaMessages.appendChild(typingDiv);
+      sigmaMessages.scrollTop = sigmaMessages.scrollHeight;
+      
+      try {
+        if (typeof puter === 'undefined') {
+          throw new Error('Puter SDK no está cargado');
+        }
+        
+        const response = await puter.ai.chat(msg, { 
+          model: "gpt-4o-mini",
+          system_prompt: "Eres Sigma AI, un asistente inteligente especializado en DJ Posaxa. Esta página trata sobre 'Esdeveniments' - eventos y fiestas de DJ Posaxa. Destaca el evento 'Disco Inferno XS' el 17 de agosto en Can Trullàs (Granollers) a las 21:00h para joves de 12-17 años, organizado por 'Blancs – Blancs to hell'. Incluye información sobre la experiencia musical, ambiente de fiesta, luces, y planes futuros. Responde en español/catalán, usa emojis de fiesta y ayuda con información sobre eventos."
+        });
+        
+        sigmaMessages.removeChild(typingDiv);
+        addSigmaMessage("", response);
+        
+      } catch (error) {
+        console.error('Error en Sigma AI:', error);
+        sigmaMessages.removeChild(typingDiv);
+        addSigmaMessage("", "⚠️ Lo siento, no puedo conectarme en este momento. Intenta de nuevo más tarde. 🤖");
+      }
+      
+      sigmaLogo.classList.add("pulse");
+      setTimeout(() => sigmaLogo.classList.remove("pulse"), 1000);
+    }
+    
+    // Event listeners
+    sigmaSend.addEventListener("click", sendSigmaMessage);
+    sigmaInput.addEventListener("keypress", e => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendSigmaMessage();
+      }
+    });
+    
+    // Mensaje de bienvenida contextual
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        addSigmaMessage("", "¡Hola! 🎉 Soy Sigma AI. Esta página muestra los próximos eventos de DJ Posaxa. ¡El evento destacado es 'Disco Inferno XS' el 17 de agosto en Can Trullàs (Granollers) a las 21:00h! Es para jóvenes de 12-17 años con luces espectaculares y la mejor música. ¿Te interesa saber más sobre este o futuros eventos? 🎪🔥");
+      }, 1500);
+    });
+  </script>
 
 </body>
 </html>
