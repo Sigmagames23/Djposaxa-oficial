@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Per què escollir-me — DJ Posaxa</title>
+  <link rel="icon" type="image/png" href="Fotos/ChatGPT Image 20 d’ag. del 2025, 21_45_57.png">
   <link rel="stylesheet" href="assets/css/style.css" />
   <!-- Librerías para Sigma AI -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -300,6 +301,52 @@
       display: inline-block;
     }
     
+    /* Estilos para logos */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .brand .logo {
+      height: 40px;
+      width: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .brand .logo:hover {
+      transform: scale(1.1);
+    }
+    
+    .brand .name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+    
+    .brand:hover .name {
+      color: #667eea;
+    }
+    
+    .sigma-credit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .sigma-logo {
+      height: 20px;
+      width: auto;
+      vertical-align: middle;
+      transition: all 0.3s ease;
+    }
+    
+    .sigma-logo:hover {
+      transform: scale(1.2);
+    }
+    
     /* Responsive */
     @media (max-width: 768px) {
       #sigma-chatbox {
@@ -314,13 +361,33 @@
         height: 60px;
         font-size: 24px;
       }
+      
+      .sigma-credit {
+        flex-direction: column;
+        gap: 4px;
+      }
+      
+      .brand {
+        gap: 8px;
+      }
+      
+      .brand .logo {
+        height: 32px;
+      }
+      
+      .brand .name {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
   <header class="header">
     <div class="header__inner">
-      <div class="brand">DJ Posaxa</div>
+      <div class="brand">
+        <img src="Fotos/ChatGPT Image 20 d’ag. del 2025, 21_45_57.png" alt="DJ Posaxa" class="logo" />
+        <span class="name">DJ Posaxa</span>
+      </div>
       <nav class="nav">
         <a href="index.html">Inici</a>
         <a href="en-què-em-centro.html">En què em centro</a>
@@ -389,7 +456,7 @@ No Te Hagas x Cayo La noche</a>
   <footer class="footer">
     <div class="footer__inner">
       <span>© <span id="year"></span> DJ Posaxa</span>
-      <span>Desarollada per: Sigma Company</span>
+      <span class="sigma-credit">Desarollada per: <img src="Fotos/Logo sigma company pequeñopeg.jpeg" alt="Sigma Company" class="sigma-logo" /> Sigma Company</span>
       <span>Granollers · BCN</span>
     </div>
   </footer>

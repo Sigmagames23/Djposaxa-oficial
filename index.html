@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <meta name="description" content="DJ Posaxa - Música per a festes i esdeveniments a Granollers i BCN. Especialista en mashups, reggaeton, dembow i música catalana." />
-  <meta name="keywords" content="DJ, música, festa, esdeveniments, Granollers, BCN, mashup, reggaeton, dembow" />
+  <meta name="keywords" content="DJ, música, festa, esdeveniments, Gr nb anollers, BCN, mashup, reggaeton, dembow" />
   <meta property="og:title" content="DJ Posaxa — DJ per festes i esdeveniments" />
   <meta property="og:description" content="Música per a festes i esdeveniments a Granollers i BCN." />
   <meta property="og:image" content="Fotos/inici 1.jpg" />
@@ -17,6 +17,7 @@
   <meta name="twitter:description" content="Música per a festes i esdeveniments a Granollers i BCN." />
   <meta name="twitter:image" content="Fotos/inici 1.jpg" />
   <title>DJ Posaxa — Inici</title>
+  <link rel="icon" type="image/png" href="Fotos/ChatGPT Image 20 d’ag. del 2025, 21_45_57.png">
   <link rel="stylesheet" href="assets/css/style.css" />
   <!-- Librerías para Sigma AI -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -294,6 +295,30 @@
     
     .brand {
       animation: rotateInLeft 1s ease-out 0.2s both;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .brand .logo {
+      height: 40px;
+      width: auto;
+      transition: all 0.3s ease;
+    }
+    
+    .brand .logo:hover {
+      transform: scale(1.1);
+    }
+    
+    .brand .name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+    
+    .brand:hover .name {
+      color: #667eea;
     }
     
     .nav a {
@@ -315,6 +340,24 @@
     /* Footer mejorado */
     .footer {
       animation: slideInUp 1s ease-out;
+    }
+    
+    .sigma-credit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .sigma-logo {
+      height: 20px;
+      width: auto;
+      vertical-align: middle;
+      transition: all 0.3s ease;
+    }
+    
+    .sigma-logo:hover {
+      transform: scale(1.2);
     }
     
     /* Estilos para Sigma AI - Diseño Senior */
@@ -570,13 +613,33 @@
         font-size: 12px;
         padding: 8px 12px;
       }
+      
+      .sigma-credit {
+        flex-direction: column;
+        gap: 4px;
+      }
+      
+      .brand {
+        gap: 8px;
+      }
+      
+      .brand .logo {
+        height: 32px;
+      }
+      
+      .brand .name {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
   <header class="header">
     <div class="header__inner">
-      <div class="brand">DJ Posaxa</div>
+       <div class="brand">
+        <img src="Fotos/ChatGPT Image 20 d’ag. del 2025, 21_45_57.png" alt="DJ Posaxa" class="logo" />
+        <span class="name">DJ Posaxa</span>
+      </div>
       <nav class="nav">
         <a href="index.html">Inici</a>
         <a href="en-què-em-centro.html">En què em centro</a>
@@ -645,7 +708,7 @@
       </article>
 
       <article class="card reveal">
-        <a class="figure" aria-label="DJ actuant">
+        <a class="figure contain" aria-label="DJ actuant">
           <img src="Fotos/inici 2.jpg" alt="DJ actuant" loading="lazy" />
         </a>
       </article>
@@ -669,7 +732,7 @@
   <footer class="footer">
     <div class="footer__inner">
       <span>© <span id="year"></span> DJ Posaxa</span>
-      <span>Desarollada per: Sigma Company</span>
+      <span class="sigma-credit">Desarollada per: <img src="Fotos/Logo sigma company pequeñopeg.jpeg" alt="Sigma Company" class="sigma-logo" /> Sigma Company</span>
       <span>Granollers · BCN</span>
     </div>
   </footer>
